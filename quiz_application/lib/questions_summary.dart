@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class QuestionsSummary extends StatelessWidget {
   const QuestionsSummary(this.summaryData, {super.key});
@@ -14,17 +15,70 @@ class QuestionsSummary extends StatelessWidget {
           children: summaryData.map(
             (data) {
               return Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(((data['question_index'] as int) + 1).toString()),
+                  
+                  Container(
+                    padding: const EdgeInsets.all(12.0),
+                    margin: const EdgeInsets.only(right: 10.0),
+                    decoration: BoxDecoration(
+                      color: Colors.white
+                          .withOpacity(0.8), 
+                      shape: BoxShape.circle,
+                      border: Border.all(
+                          color: Colors.grey.shade300,
+                          width: 1), 
+                    ),
+                    child: Center(
+                      child: Text(
+                        ((data['question_index'] as int) + 1).toString(),
+                        style: GoogleFonts.lato(
+                          color: Colors.purple, 
+                          fontSize: 20,
+                        ),
+                      ),
+                    ),
+                  ),
+                  
                   Expanded(
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(data['question'] as String),
-                        const SizedBox(
-                          height: 5,
+                        Container(
+                          padding: const EdgeInsets.all(8.0),
+                          decoration: BoxDecoration(
+                            color: Colors.purple
+                                .withOpacity(0.1), 
+                            borderRadius:
+                                BorderRadius.circular(8.0), 
+                          ),
+                          child: Text(
+                            data['question'] as String,
+                            style: GoogleFonts.lato(
+                              color: Colors.white.withOpacity(0.8),
+                              fontSize: 16,
+                            ),
+                          ),
                         ),
-                        Text(data['user_answer'] as String),
-                        Text(data['correct_answer'] as String),
+                        const SizedBox(height: 5),
+                        Text(
+                          data['user_answer'] as String,
+                          style: GoogleFonts.lato(
+                            color: Colors.purple.shade300,
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          textAlign: TextAlign.start,
+                        ),
+                        Text(
+                          data['correct_answer'] as String,
+                          style: GoogleFonts.lato(
+                            color: Colors.green.shade700,
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          textAlign: TextAlign.start,
+                        ),
                       ],
                     ),
                   ),

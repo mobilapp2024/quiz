@@ -28,7 +28,7 @@ class StartScreen extends StatelessWidget {
             height: 80,
           ),
           Text(
-            'Svenske tilstander i Norge',
+            'Common knowledge quiz',
             style: GoogleFonts.lato(
               color: const Color.fromARGB(255, 215, 179, 217),
               fontSize: 24,
