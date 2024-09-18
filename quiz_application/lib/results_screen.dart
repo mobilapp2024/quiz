@@ -1,29 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:quiz_application/answer_button.dart';
-import 'package:quiz_application/data/questions.dart';
 import 'package:quiz_application/questions_summary.dart';
+import 'package:quiz_application/models/quiz_questions.dart';
 
 class ResultsScreen extends StatelessWidget {
   const ResultsScreen({
     super.key,
     required this.chooseAnswers,
     required this.backToStart,
+    required this.questions,
   });
 
   final List<String> chooseAnswers;
   final VoidCallback backToStart;
+  final List<QuizQuestion> questions;
 
   List<Map<String, Object>> getSummaryData() {
     final List<Map<String, Object>> summary = [];
 
     for (var i = 0; i < chooseAnswers.length; i++) {
-      summary.add({
-        'question_index': i,
-        'question': questions[i].text,
-        'correct_answer': questions[i].answers[0],
-        'user_answer': chooseAnswers[i],
-      });
+      if (i < questions.length) { 
+        summary.add({
+          'question_index': i,
+          'question': questions[i].text,
+          'correct_answer': questions[i].answers[0],
+          'user_answer': chooseAnswers[i],
+        });
+      }
     }
 
     return summary;
