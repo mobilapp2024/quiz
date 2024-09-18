@@ -110,7 +110,7 @@ class QuizManagerState extends State<QuizManager> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Quiz Manager'),
+        title: const Text('Quiz Manager', style: TextStyle(color: Colors.white),),
         flexibleSpace: Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
@@ -118,8 +118,8 @@ class QuizManagerState extends State<QuizManager> {
                 Color.fromARGB(255, 122, 60, 230),
                 Color.fromARGB(255, 66, 39, 114),
               ],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
             ),
           ),
         ),
@@ -132,7 +132,17 @@ class QuizManagerState extends State<QuizManager> {
         ],
         elevation: 4.0, // Added elevation for a modern look
       ),
-      body: Padding(
+      body: Container(
+        decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Color.fromARGB(255, 122, 60, 230),
+                Color.fromARGB(255, 66, 39, 114),
+              ],
+              begin: Alignment.bottomCenter,
+              end: Alignment.topCenter,
+            ),
+          ),
         padding: const EdgeInsets.all(8.0),
         child: ListView.builder(
           itemCount: quizzes.length,
