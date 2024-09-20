@@ -3,6 +3,7 @@ import 'package:quiz_application/answer_button.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:quiz_application/models/quiz_questions.dart';
 
+// Screen that displays a question and its possible answers.
 class QuestionsScreen extends StatefulWidget {
   const QuestionsScreen({
     super.key,
@@ -22,6 +23,7 @@ class QuestionsScreen extends StatefulWidget {
 class _QuestionScreenState extends State<QuestionsScreen> {
   var currentQuestionIndex = 0;
 
+  // Handles the answer selection and moves to the next question.
   void answerQuestion(String selectedAnswers) {
     widget.onSelectAnswer(selectedAnswers);
     setState(() {

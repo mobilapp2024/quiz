@@ -4,6 +4,8 @@ import 'package:quiz_application/questions_screen.dart';
 import 'package:quiz_application/results_screen.dart';
 import 'package:quiz_application/start_screen.dart';
 
+// A stateful widget that manages the quiz flow, displaying the start screen, 
+// questions, and results.
 class Quiz extends StatefulWidget {
   final List<QuizQuestion> questions;
 
@@ -25,6 +27,7 @@ class _QuizState extends State<Quiz> {
     });
   }
 
+  // Records the chosen answer and checks if the quiz is complete.
   void chooseAnswer(String answer) {
     selectedAnswers.add(answer);
 
@@ -35,6 +38,7 @@ class _QuizState extends State<Quiz> {
     }
   }
 
+  // Resets the quiz to start screen and clears selected answers.
   void backToStart() {
     setState(() {
       activeScreen = 'start-screen';
@@ -50,6 +54,7 @@ class _QuizState extends State<Quiz> {
   Widget build(context) {
     Widget screenWidget = StartScreen(switchScreen, exitToManager);
 
+    // Determine which screen to display based on the current active screen.
     if (activeScreen == 'questions-screen') {
       screenWidget = QuestionsScreen(
         questions: widget.questions,

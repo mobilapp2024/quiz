@@ -7,6 +7,7 @@ import 'package:quiz_application/models/quiz_model.dart'; // Updated import
 import 'package:quiz_application/quiz.dart';
 import 'package:quiz_application/data/default_questions.dart'; // Import the Quiz widget
 
+// A stateful widget that manages quizzes and their questions.
 class QuizManager extends StatefulWidget {
   const QuizManager({super.key});
 
@@ -23,6 +24,7 @@ class QuizManagerState extends State<QuizManager> {
     _loadQuizzes();
   }
 
+  // Loads quizzes from shared preferences.
   Future<void> _loadQuizzes() async {
     final prefs = await SharedPreferences.getInstance();
     final String? quizzesString = prefs.getString('quizzes');
@@ -38,6 +40,7 @@ class QuizManagerState extends State<QuizManager> {
     }
   }
 
+  // Saves the current quizzes to shared preferences.
   Future<void> _saveQuizzes() async {
     final prefs = await SharedPreferences.getInstance();
     final String quizzesString =
@@ -59,6 +62,7 @@ class QuizManagerState extends State<QuizManager> {
     });
   }
 
+  // Opens the edit question screen for a specified quiz and question.
   void _editQuestion(QuizModel quiz, [QuizQuestion? question]) {
     Navigator.of(context).push(
       MaterialPageRoute(
@@ -98,6 +102,7 @@ class QuizManagerState extends State<QuizManager> {
     });
   }
 
+  // Navigates to the quiz play screen for a specified quiz.
   void _playQuiz(QuizModel quiz) {
     Navigator.of(context).push(
       MaterialPageRoute(

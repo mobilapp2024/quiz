@@ -4,6 +4,7 @@ import 'package:quiz_application/answer_button.dart';
 import 'package:quiz_application/questions_summary.dart';
 import 'package:quiz_application/models/quiz_questions.dart';
 
+// A stateless widget that displays the results of the quiz.
 class ResultsScreen extends StatelessWidget {
   const ResultsScreen({
     super.key,
@@ -16,9 +17,11 @@ class ResultsScreen extends StatelessWidget {
   final VoidCallback backToStart;
   final List<QuizQuestion> questions;
 
+  // Generates a summary of the quiz, comparing user answers with correct answers.
   List<Map<String, Object>> getSummaryData() {
     final List<Map<String, Object>> summary = [];
 
+     // Iterates through the list of answers and matches them with the corresponding question.
     for (var i = 0; i < chooseAnswers.length; i++) {
       if (i < questions.length) { 
         summary.add({

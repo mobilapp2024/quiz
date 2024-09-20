@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_application/models/quiz_questions.dart';
 
+// Screen for adding or editing a quiz question.
 class EditQuestionScreen extends StatefulWidget {
   final QuizQuestion? question;
   final ValueChanged<QuizQuestion> onSave;
@@ -39,6 +40,7 @@ class EditQuestionScreenState extends State<EditQuestionScreen> {
     super.dispose();
   }
 
+  // Saves the question if the form is valid and pops the screen.
   void _saveQuestion() {
     if (_formKey.currentState?.validate() ?? false) {
       final newQuestion = QuizQuestion(
@@ -80,6 +82,7 @@ class EditQuestionScreenState extends State<EditQuestionScreen> {
                 },
               ),
               const SizedBox(height: 16.0),
+              // Generates input fields for each answer.
               ..._answerControllers.asMap().entries.map((entry) {
                 final index = entry.key;
                 final controller = entry.value;

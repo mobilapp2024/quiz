@@ -7,6 +7,7 @@ class QuizQuestion {
     required this.answers,
   });
 
+  // Creates a QuizQuestion object from a JSON map.
   factory QuizQuestion.fromJson(Map<String, dynamic> json) {
     return QuizQuestion(
       text: json['text'] as String,
@@ -14,6 +15,7 @@ class QuizQuestion {
     );
   }
 
+  // Converts the QuizQuestion to a JSON map.
   Map<String, dynamic> toJson() {
     return {
       'text': text,
@@ -21,6 +23,7 @@ class QuizQuestion {
     };
   }
 
+  // Returns a shuffled list of answers without shuffling the original.
   List<String> getShuffledAnswers() {
     final shuffledList = List.of(answers);
     shuffledList.shuffle();

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+// A stateless widget that serves as the start screen for the quiz.
 class StartScreen extends StatelessWidget {
   const StartScreen(this.startQuiz, this.exitToManager, {super.key});
 
@@ -43,6 +44,7 @@ class StartScreen extends StatelessWidget {
               const SizedBox(
                 height: 30,
               ),
+              // Button to start the quiz.
               OutlinedButton.icon(
                 onPressed: startQuiz,
                 style: OutlinedButton.styleFrom(
@@ -54,6 +56,7 @@ class StartScreen extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
+              // Button to exit to the quiz manager.
               OutlinedButton.icon(
                 onPressed: exitToManager,
                 style: OutlinedButton.styleFrom(

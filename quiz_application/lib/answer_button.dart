@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// A custom button widget that displays an answer and triggers an action when pressed.
 class AnswerButton extends StatelessWidget {
   const AnswerButton({
     super.key,
@@ -10,6 +11,7 @@ class AnswerButton extends StatelessWidget {
   final String answerText;
   final void Function() onTap;
 
+  // Builds an `ElevatedButton` with custom styling, which calls the `onTap` function when pressed.
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
