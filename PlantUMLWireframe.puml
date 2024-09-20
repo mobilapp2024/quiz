@@ -1,0 +1,143 @@
+@startuml
+set namespaceSeparator ::
+
+class "quiz_application::answer_button.dart::AnswerButton" {
+  +String answerText
+  +void Function() onTap
+  +Widget build()
+}
+
+"quiz_application::answer_button.dart::AnswerButton" o-- "null::void Function()"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "quiz_application::answer_button.dart::AnswerButton"
+
+class "quiz_application::edit_question_screen.dart::EditQuestionScreen" {
+  +QuizQuestion? question
+  +void Function(QuizQuestion) onSave
+  +EditQuestionScreenState createState()
+}
+
+"quiz_application::edit_question_screen.dart::EditQuestionScreen" o-- "quiz_application::models::quiz_questions.dart::QuizQuestion"
+"quiz_application::edit_question_screen.dart::EditQuestionScreen" o-- "flutter::src::foundation::basic_types.dart::void Function(QuizQuestion)"
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "quiz_application::edit_question_screen.dart::EditQuestionScreen"
+
+class "quiz_application::edit_question_screen.dart::EditQuestionScreenState" {
+  -GlobalKey<FormState> _formKey
+  -TextEditingController _questionController
+  -List<TextEditingController> _answerControllers
+  +void initState()
+  +void dispose()
+  -void _saveQuestion()
+  +Widget build()
+}
+
+"quiz_application::edit_question_screen.dart::EditQuestionScreenState" o-- "flutter::src::widgets::framework.dart::GlobalKey<FormState>"
+"quiz_application::edit_question_screen.dart::EditQuestionScreenState" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"flutter::src::widgets::framework.dart::State" <|-- "quiz_application::edit_question_screen.dart::EditQuestionScreenState"
+
+class "quiz_application::main.dart::MyApp" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "quiz_application::main.dart::MyApp"
+
+class "quiz_application::models::quiz_model.dart::QuizModel" {
+  +List<QuizQuestion> questions
+  +void addQuestion()
+  +void removeQuestion()
+  +Map<String, dynamic> toJson()
+}
+
+class "quiz_application::models::quiz_questions.dart::QuizQuestion" {
+  +String text
+  +List<String> answers
+  +Map<String, dynamic> toJson()
+  +List<String> getShuffledAnswers()
+}
+
+class "quiz_application::questions_screen.dart::QuestionsScreen" {
+  +void Function(String) onSelectAnswer
+  +List<QuizQuestion> questions
+  +State<QuestionsScreen> createState()
+}
+
+"quiz_application::questions_screen.dart::QuestionsScreen" o-- "null::void Function(String)"
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "quiz_application::questions_screen.dart::QuestionsScreen"
+
+class "quiz_application::questions_screen.dart::_QuestionScreenState" {
+  +int currentQuestionIndex
+  +void answerQuestion()
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "quiz_application::questions_screen.dart::_QuestionScreenState"
+
+class "quiz_application::questions_summary.dart::QuestionsSummary" {
+  +List<Map<String, Object>> summaryData
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "quiz_application::questions_summary.dart::QuestionsSummary"
+
+class "quiz_application::quiz.dart::Quiz" {
+  +List<QuizQuestion> questions
+  +State<Quiz> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "quiz_application::quiz.dart::Quiz"
+
+class "quiz_application::quiz.dart::_QuizState" {
+  +List<String> selectedAnswers
+  +String activeScreen
+  +void switchScreen()
+  +void chooseAnswer()
+  +void backToStart()
+  +void exitToManager()
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "quiz_application::quiz.dart::_QuizState"
+
+class "quiz_application::quiz_manager.dart::QuizManager" {
+  +QuizManagerState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "quiz_application::quiz_manager.dart::QuizManager"
+
+class "quiz_application::quiz_manager.dart::QuizManagerState" {
+  +List<QuizModel> quizzes
+  +void initState()
+  -dynamic _loadQuizzes()
+  -dynamic _saveQuizzes()
+  +void addQuiz()
+  +void removeQuiz()
+  -void _editQuestion()
+  -void _removeQuestion()
+  -void _removeEmptyQuizzes()
+  -void _playQuiz()
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "quiz_application::quiz_manager.dart::QuizManagerState"
+
+class "quiz_application::results_screen.dart::ResultsScreen" {
+  +List<String> chooseAnswers
+  +void Function() backToStart
+  +List<QuizQuestion> questions
+  +List<Map<String, Object>> getSummaryData()
+  +Widget build()
+}
+
+"quiz_application::results_screen.dart::ResultsScreen" o-- "dart::ui::void Function()"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "quiz_application::results_screen.dart::ResultsScreen"
+
+class "quiz_application::start_screen.dart::StartScreen" {
+  +void Function() startQuiz
+  +void Function() exitToManager
+  +Widget build()
+}
+
+"quiz_application::start_screen.dart::StartScreen" o-- "null::void Function()"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "quiz_application::start_screen.dart::StartScreen"
+
+
+@enduml
