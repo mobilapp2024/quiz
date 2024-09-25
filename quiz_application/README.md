@@ -1,4 +1,4 @@
-# quiz_application
+# Quiz Application
 
 A simple quiz application built with Flutter.
 
